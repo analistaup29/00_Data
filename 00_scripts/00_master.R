@@ -66,28 +66,28 @@ bases_integradas      <- file.path(data, "03_bases_integradas")
 # Correr codigo ------------------------------------------------------------------
 
 # Limpiar datos de codigo R
-if (limpiar_r) source(file.path(scripts, "01_clean", "00_run_r.R"))
+if (limpiar_r) source(file.path(scripts, "01_limpiar_bases", "00_run_r.R"))
 # INPUTS
 #  file.path(data_source1, "raw","") 
 # OUTPUTS
 #  file.path(data_source1, "clean", "")
 
 # Limpiar datos de codigo en Stata
-if (limpiar_stata) stata(file.path(scripts, "01_clean", "00_run_stata.do"))
+if (limpiar_stata) stata(file.path(scripts, "01_limpiar_bases", "00_run_stata.do"))
 # INPUTS
 #  file.path(data_source2, "raw","") #
 # OUTPUTS 
 #  file.path(data_source2, "clean", "") #
 
 # Limpiar datos de codigo en Python
-if (limpiar_python) py_run_file(file.path(scripts, "01_clean", "00_run_python.py"))
+if (limpiar_python) py_run_file(file.path(scripts, "01_limpiar_bases", "00_run_python.py"))
 # INPUTS
 #  file.path(data_source3, "raw","") 
 # OUTPUTS 
 #  file.path(data_source3, "clean", "") 
 
 # Construct variables and analysis dataset
-if (construir_bases_integradas) source(file.path(scripts, "02_construct", "01_construct_baseintegrada.R"))
+if (construir_bases_integradas) source(file.path(scripts, "02_construir_bases", "01_construir_baseintegrada.R"))
 # INPUTS 
 #  file.path(data_source1, "clean", "") 
 # OUTPUTS
