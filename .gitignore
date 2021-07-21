@@ -47,3 +47,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+*.dta
+*.xls
+*.zip
+*.dbf
+*.xlsx
+*.sav
