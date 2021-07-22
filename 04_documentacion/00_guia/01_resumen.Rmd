@@ -1,0 +1,74 @@
+---
+title: "Documentación equipo data"
+#subtitle: "Parte 1"
+date: Última actualización `r format(Sys.time(), '%d %b %Y')`
+output: 
+  html_document:
+    self_contained: no
+    includes:
+      in_header: header.html
+    theme: flatly
+    highlight: haddock
+    # code_folding: show
+    toc: true
+    toc_depth: 4
+    toc_float:
+      collapsed: true
+    keep_md: false
+    keep_tex: false ## Change to true if want keep intermediate .tex file
+    css: "style.css" ## For multi-col environments
+always_allow_html: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
+```
+
+
+## Introducción
+
+El presente documento contiene enlaces y referencias para los conceptos utilizados en la construcción de la carpeta de data que se encuentra en la siguiente ruta del Disco B "B:\OneDrive - Ministerio de Educación\unidad_B\0. Data".
+
+1. Data en formato tidy:
+
+Datos en formato tidy proporcionan una forma estandarizada para trabajar con datos, puedes leer mas en este articulo de Towards Data Science: https://towardsdatascience.com/what-is-tidy-data-d58bb9ad2458
+
+En general, la data en formato tidy tiene que cumplir con las siguientes reglas:
+
+1. Cada variable es una columna
+
+2. Cada observacion es una fila
+
+Usaremos el formato tidy para convertir las tablas de datos “raw” o crudas en tablas de datos clean.
+
+2. GitHub:
+
+Github nos permite establecer un proceso de control de versiones. El control de versiones es una parte importante de la administración de datos del equipo. Sigue las instrucciones para crearte una cuenta y tenerla instalada: 1. Ya tienes una cuenta en GitHub.com? Si no, ve a: https://github.com/join e inscríbete.
+
+2. Envíame tu usuario de GitHub por discord (bmora) o al correo analistaup29@minedu.gob.pe
+
+3. Descarga e instala Github Desktop en tu PC: https://desktop.github.com/
+
+4. Inicia sesión en GitHub Desktop con tu usuario Github
+
+5. Una vez que me envies tu usuario de GitHub, te invitaré al repositorio de datos de UPP.
+
+Se utilizará GitHub para administrar el código de la carpeta Data. Puedes leer más en la diapositiva de capacitación: https://mineduperu-my.sharepoint.com/:p:/g/personal/analistaup29_minedu_gob_pe/ERp3WjX76zFJpMLf8_41zJ8BAc6HST6HCmXJ0T8-Mrrmig?e=LutwZF
+
+También puedes revisar las diapositivas del BM en su curso de introducción a GitHub en el siguiente enlace: https://osf.io/5ugkv/
+
+3. Guía de estilo para el código:
+
+Es importante que todos manejemos una manera de escribir código que sea transparente y entendible, por tal motivo puedes leer desde la página 178 de este libro para aprender a documentar código y otras buenas prácticas en Stata: https://openknowledge.worldbank.org/handle/10986/35594
+
+4. Algunos links de interés:
+
+### Parte 2.1
+
+### Parte 2.2
+
+## Parte 3
+
+### Parte 3.1
+
+### Parte 3.2
