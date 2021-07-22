@@ -4,7 +4,7 @@ title: "Documentación equipo data"
 date: Última actualización `r format(Sys.time(), '%d %b %Y')`
 output: 
   html_document:
-    self_contained: no
+    self_contained: yes
     includes:
       in_header: header.html
     theme: flatly
