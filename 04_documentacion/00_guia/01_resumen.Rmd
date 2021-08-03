@@ -1,6 +1,5 @@
 ---
-title: "Documentación equipo data"
-#subtitle: "Parte 1"
+title: "Documentación de la carpeta Data"
 date: Última actualización `r format(Sys.time(), '%d %b %Y')`
 output: 
   html_document:
@@ -15,8 +14,8 @@ output:
     toc_float:
       collapsed: true
     keep_md: false
-    keep_tex: false ## Change to true if want keep intermediate .tex file
-    css: "style.css" ## For multi-col environments
+    keep_tex: false 
+    css: "style.css" 
 always_allow_html: true
 ---
 
@@ -24,10 +23,36 @@ always_allow_html: true
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
 ```
 
-
 ## Introducción
 
+Este documento contiene los documentos de la organización de data.
+
 El presente documento contiene enlaces y referencias para los conceptos utilizados en la construcción de la carpeta de data que se encuentra en la siguiente ruta del Disco B "B:\OneDrive - Ministerio de Educación\unidad_B\0. Data".
+
+
+La carpeta Data contiene 
+
+Este documento contiene información acerca de la organización de la carpeta data.
+
+## Organización de la carpeta data
+
+
+
+## Actualización de la carpeta data
+
+
+
+# Crear un proyecto
+
+## Código utilizado 
+
+
+
+## Buenas prácticas
+
+
+
+## Conceptos
 
 1. Data en formato tidy:
 
