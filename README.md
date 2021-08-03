@@ -42,11 +42,11 @@ Instrucciones para replicar
 Bases construidas
 ---------------------------
 
-Puedes acceder a las bases construidas en la siguiente ruta en la Unidad B. Ve a `B:\OneDrive - Ministerio de Educación\unidad_B\00_Data\03_bases_integradas`. Las bases integradas se encuentran a nivel de servicio educativo, local educativo, ugel, distrito entre otras. Las bases están en formatos `.dta` y `.rda` para su análisis en Stata o R. **En este momento se encuentra disponible la base a nivel de servicio educativo**
+Puedes acceder a las bases construidas en la siguiente ruta en la Unidad B. Ve a `B:\OneDrive - Ministerio de Educación\unidad_B\00_Data\03_bases_integradas`. Las bases integradas se encuentran a nivel de servicio educativo, local educativo, ugel, distrito entre otras. Las bases están en formatos `.dta` y `.rda` para su análisis en Stata o R. **(En este momento se encuentra disponible la base a nivel de servicio educativo)**
 
 Guías
 ---------------------------
 
-También se han elaborado guías para que puedas utilizar las bases de datos, crees un proyecto y lo sincronizes con GitHub, etc. Esta información se encuentra disponible en la [Guía de Usuario](https://raw.githack.com/analistaup29/00_Data/main/04_documentacion/00_guia/01_resume.html) **En elaboración**
+También se han elaborado guías para que puedas utilizar las bases de datos, crees un proyecto y lo sincronizes con GitHub, etc. Esta información se encuentra disponible en la [Guía de Usuario](https://raw.githack.com/analistaup29/00_Data/main/04_documentacion/00_guia/01_resume.html) **(En elaboración)**
 
 &nbsp;
