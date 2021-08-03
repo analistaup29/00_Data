@@ -3,11 +3,11 @@
 # Cargar dataset ---------------------------------------------------------------
 
 padron_iiee <- read_rds(file.path(bases_limpias, "02_OSEE", "04_padron_iiee", "padron_iiee_limpia.rds"))
-padron_asignacion_anexo4 <- read_rds(filepath(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo4_limpio.dta"))
-padron_asignacion_anexo5 <- read_rds(filepath(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo5_limpio.dta"))
-padron_asignacion_anexo6 <- read_rds(filepath(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo6_limpio.dta"))
-registro_eib <- read_rds(filepath(bases_limpias, "02_OSEE", "06_registro_eib", "registro_eib_limpio.rds"))
-siagie_cod_mod <- read_rds(filepath(bases_crudas, "02_OSEE", "01_siagie", "siagie_cod_mod.rds"))
+padron_asignacion_anexo4 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo4_limpio.dta"))
+padron_asignacion_anexo5 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo5_limpio.dta"))
+padron_asignacion_anexo6 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo6_limpio.dta"))
+registro_eib <- read_rds(file.path(bases_limpias, "02_OSEE", "06_registro_eib", "registro_eib_limpio.rds"))
+siagie_cod_mod <- read_rds(file.path(bases_crudas, "02_OSEE", "01_siagie", "siagie_cod_mod.rds"))
 
 # Construir/mantener variables de interés --------------------------------------
 
@@ -24,8 +24,8 @@ registro_eib <- registro_eib %>%
 
 # SIAGIE
 siagie_cod_mod <- siagie_cod_mod %>% 
-  rowwise() %>% mutate(talumno_siagie = sum(c(taprobado_siagie,tpromocion_guiada_siagie, requiere_recuperacion_pedagogica, postergacion_de_evaluacion, tretirado_siagie, sin_registro_de_evaluacion, fallecidos)),
-                      talumno_otro_estado_siagie = sum(c(requiere_recuperacion_pedagogica, postergacion_de_evaluacion, sin_registro_de_evaluacion, fallecidos)))
+  rowwise() %>% mutate(talumno_siagie = sum(c(taprobado_siagie,tpromocion_guiada_siagie, requiere_recup, postergacion_de_evaluacion, tretirado_siagie, sin_registro_de_evaluacion, fallecidos)),
+                      talumno_otro_estado_siagie = sum(c(requiere_recup, postergacion_de_evaluacion, sin_registro_de_evaluacion, fallecidos)))
 
 siagie_cod_mod <- siagie_cod_mod %>% select(cod_mod, anexo, talumno_siagie, tpromocion_guiada_siagie, tretirado_siagie, talumno_otro_estado_siagie)
 
@@ -126,22 +126,22 @@ base_integrada_cod_mod$lengua_originariaeib3 <- labelled(base_integrada_cod_mod$
 
 
 base_integrada_cod_mod$eib <- labelled(base_integrada_cod_mod$eib, label="IIEE es EIB (Registro EIB 2019)", labels = eib_levels)
-base_integrada_cod_mod$eib <- as_factor(base_integrada_cod_mod$eib, levels = "values")
+base_integrada_cod_mod$eib <- haven::as_factor(base_integrada_cod_mod$eib, levels = "values")
 
 base_integrada_cod_mod$forma_atencion_eib <- labelled(base_integrada_cod_mod$forma_atencion_eib, label="Forma EIB (Registro EIB 2019)", labels = forma_eib_levels)
-base_integrada_cod_mod$forma_atencion_eib <- as_factor(base_integrada_cod_mod$forma_atencion_eib, levels = "values")
+base_integrada_cod_mod$forma_atencion_eib <-  haven::as_factor(base_integrada_cod_mod$forma_atencion_eib, levels = "values")
 
 base_integrada_cod_mod$zona_frontera <- labelled(base_integrada_cod_mod$zona_frontera, label="IIEE se encuentra en zona de frontera", labels = zona_frontera_levels)
-base_integrada_cod_mod$zona_frontera <- as_factor(base_integrada_cod_mod$zona_frontera, levels = "values")
+base_integrada_cod_mod$zona_frontera <-  haven::as_factor(base_integrada_cod_mod$zona_frontera, levels = "values")
 
 base_integrada_cod_mod$vraem <- labelled(base_integrada_cod_mod$vraem, label="IIEE se encuentra en zona de influencia VRAEM", labels = vraem_levels)
-base_integrada_cod_mod$vraem <- as_factor(base_integrada_cod_mod$vraem, levels = "values")
+base_integrada_cod_mod$vraem <-  haven::as_factor(base_integrada_cod_mod$vraem, levels = "values")
 
 base_integrada_cod_mod$intervencion_vraem <- labelled(base_integrada_cod_mod$intervencion_vraem, label="Tipo de intervencion IIEE Vraem", labels = influencia_vraem_levels)
-base_integrada_cod_mod$intervencion_vraem <- as_factor(base_integrada_cod_mod$intervencion_vraem, levels = "values")
+base_integrada_cod_mod$intervencion_vraem <-  haven::as_factor(base_integrada_cod_mod$intervencion_vraem, levels = "values")
 
 # Guardar bases en RDS y DTA ---------------------------------------------------
 
-write_rds(base_integrada_cod_mod, path = filepath(bases_construidas, "01_bases_integradas", "base_integrada_cod_mod.rds"))
-write_dta(base_integrada_cod_mod, path = filepath(bases_construidas, "01_bases_integradas", "base_integrada_cod_mod.dta"))
+write_rds(base_integrada_cod_mod, path = file.path(bases_construidas, "01_bases_integradas", "base_integrada_cod_mod.rds"))
+write_dta(base_integrada_cod_mod, path = file.path(bases_construidas, "01_bases_integradas", "base_integrada_cod_mod.dta"))
 

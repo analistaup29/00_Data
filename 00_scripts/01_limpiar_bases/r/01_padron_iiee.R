@@ -3,7 +3,8 @@
 # Cargar dataset ---------------------------------------------------------
 
 # Leer dbf
-padron_iiee <- read.dbf(file.path(bases_crudas, "02_OSEE", "04_padron_iiee", "Padron_web20210723.dbf", as.is = TRUE))  %>% clean_names()
+padron_iiee <- read.dbf(file.path(bases_crudas, "02_OSEE", "04_padron_iiee","Padron_web20210723.dbf"), as.is = TRUE)  %>% clean_names()
+
 
 # Cambiar encoding a UTF-8 - Encoding se encuentra en IBM850
 padron_iiee<-padron_iiee %>%
