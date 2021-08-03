@@ -4,7 +4,7 @@
 
 # Repositorio Team Data - UPP
 
-Este repositorio contiene el código que transforma las bases de datos/fuentes de información generadas por Minedu para su uso en la 
+Este repositorio contiene el código que transforma las bases de datos/fuentes de información generadas por Minedu para su uso en la elaboración de estudios/análisis enfocados en asegurar un gasto público eficiente y tomar decisiones en base a data/evidencia.
 
 Si encuentras algún problema para correr el código o reproducir los resultados, por favor [crea un `Informe de problemas`](https://github.com/analistaup29/00_Data/issues/new) en este repositorio.
 
