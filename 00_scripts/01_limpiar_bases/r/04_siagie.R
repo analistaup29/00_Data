@@ -31,5 +31,5 @@ siagie_cod_mod <- siagie_2020 %>%
 
 # Guardar bases en RDS y DTA ---------------------------------------------------
 
-write_dta(siagie_cod_mod, path = file.path(bases_crudas, "02_OSEE", "01_siagie", "siagie_cod_mod.dta"))
-write_rds(siagie_cod_mod, path = file.path(bases_crudas, "02_OSEE", "01_siagie", "siagie_cod_mod.rds"))
+write_dta(siagie_cod_mod, path = file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_cod_mod.dta"))
+write_rds(siagie_cod_mod, path = file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_cod_mod.rds"))

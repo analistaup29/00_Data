@@ -3,11 +3,11 @@
 # Cargar dataset ---------------------------------------------------------------
 
 padron_iiee <- read_rds(file.path(bases_limpias, "02_OSEE", "04_padron_iiee", "padron_iiee_limpia.rds"))
-padron_asignacion_anexo4 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo4_limpio.dta"))
-padron_asignacion_anexo5 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo5_limpio.dta"))
-padron_asignacion_anexo6 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo6_limpio.dta"))
+padron_asignacion_anexo4 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo4_limpio.rds"))
+padron_asignacion_anexo5 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo5_limpio.rds"))
+padron_asignacion_anexo6 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo6_limpio.rds"))
 registro_eib <- read_rds(file.path(bases_limpias, "02_OSEE", "06_registro_eib", "registro_eib_limpio.rds"))
-siagie_cod_mod <- read_rds(file.path(bases_crudas, "02_OSEE", "01_siagie", "siagie_cod_mod.rds"))
+siagie_cod_mod <- read_rds(file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_cod_mod.rds"))
 
 # Construir/mantener variables de interés --------------------------------------
 
@@ -27,7 +27,7 @@ siagie_cod_mod <- siagie_cod_mod %>%
   rowwise() %>% mutate(talumno_siagie = sum(c(taprobado_siagie,tpromocion_guiada_siagie, requiere_recup, postergacion_de_evaluacion, tretirado_siagie, sin_registro_de_evaluacion, fallecidos)),
                       talumno_otro_estado_siagie = sum(c(requiere_recup, postergacion_de_evaluacion, sin_registro_de_evaluacion, fallecidos)))
 
-siagie_cod_mod <- siagie_cod_mod %>% select(cod_mod, anexo, talumno_siagie, tpromocion_guiada_siagie, tretirado_siagie, talumno_otro_estado_siagie)
+siagie_cod_mod <- siagie_cod_mod %>% select(cod_mod, anexo, talumno_siagie, taprobado_siagie, tpromocion_guiada_siagie, tretirado_siagie, talumno_otro_estado_siagie)
 
 siagie_cod_mod$talumno_siagie <- as.integer(siagie_cod_mod$talumno_siagie)
 siagie_cod_mod$taprobado_siagie <- as.integer(siagie_cod_mod$taprobado_siagie)
