@@ -1,4 +1,4 @@
-# Construir data
+# Construir data base integrada a nivel de servicio educativo (código modular)
 
 # Cargar dataset ---------------------------------------------------------------
 
