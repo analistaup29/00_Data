@@ -47,6 +47,6 @@ Puedes acceder a las bases construidas en la siguiente ruta en la Unidad B. Ve a
 Guías
 ---------------------------
 
-También se han elaborado guías para que puedas utilizar las bases de datos, crees un proyecto y lo sincronizes con GitHub, etc. Esta información se encuentra disponible en la [Guía de Usuario](https://raw.githack.com/analistaup29/00_Data/main/04_documentacion/00_guia/01_resume.html) **(En elaboración)**
+También se han elaborado guías para que puedas utilizar las bases de datos, crees un proyecto y lo sincronizes con GitHub, etc. Esta información se encuentra disponible en la [Guía de Usuario](https://raw.githack.com/analistaup29/00_Data/main/04_documentacion/00_guia/01_resumen.html) **(En elaboración)**
 
 &nbsp;
