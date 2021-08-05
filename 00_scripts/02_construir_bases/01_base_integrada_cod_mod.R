@@ -51,11 +51,12 @@ padron_asignacion_anexo6 <- select(padron_asignacion_anexo6, cod_mod, anexo, vra
 # Construir base integrada a nivel de servicio educativo (cod_mod) -------------
 
 base_integrada_cod_mod <- padron_iiee %>%
-  full_join(siagie_cod_mod, by = c('cod_mod', "anexo")) %>%
-  full_join(registro_eib, by = c('cod_mod', "anexo")) %>%
-  full_join(padron_asignacion_anexo4, by = c('cod_mod', "anexo")) %>%
-  full_join(padron_asignacion_anexo5, by = c('cod_mod', "anexo")) %>%
-  full_join(padron_asignacion_anexo6, by = c('cod_mod', "anexo"))
+  left_join(siagie_cod_mod, by = c('cod_mod', "anexo")) %>%
+  left_join(registro_eib, by = c('cod_mod', "anexo")) %>%
+  left_join(padron_asignacion_anexo4, by = c('cod_mod', "anexo")) %>%
+  left_join(padron_asignacion_anexo5, by = c('cod_mod', "anexo")) %>%
+  left_join(padron_asignacion_anexo6, by = c('cod_mod', "anexo")) %>%
+  distinct()
 
 # Añadir labels y factores -----------------------------------------------------
 
