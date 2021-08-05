@@ -24,6 +24,16 @@ if (Sys.getenv("USERNAME") == "analistaup18") {
                            fsep = .Platform$file.sep)
 }
 
+# PC Analista UP 15
+if (Sys.getenv("USERNAME") == "analistaup15") {
+  data        <- file.path("B:/OneDrive - Ministerio de Educación/unidad_B/00_Data",
+                           fsep = .Platform$file.sep)
+  github      <- file.path("C:/Users/ANALISTAUP15/Documents/GitHub/00_Data",
+                           fsep = .Platform$file.sep)
+  ruta_stata  <- file.path("D:/Stata15/StataSE-64",
+                           fsep = .Platform$file.sep)
+}
+
 # Paquetes utilizados ---------------------------------------------------------------------
 
 packages <- c("tidyverse",

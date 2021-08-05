@@ -22,7 +22,7 @@ registro_eib <- mutate(registro_eib, eib = c("EIB"))
 registro_eib <- registro_eib %>%
   select(cod_mod, anexo, eib, forma_atencion_eib, lengua_originariaeib1, lengua_originariaeib2, lengua_originariaeib3)
 
-# SIAGIE
+# SIAGIE 2020 (Matricula)
 siagie_cod_mod <- siagie_cod_mod %>% 
   rowwise() %>% mutate(talumno_siagie = sum(c(taprobado_siagie,tpromocion_guiada_siagie, requiere_recup, postergacion_de_evaluacion, tretirado_siagie, sin_registro_de_evaluacion, fallecidos)),
                       talumno_otro_estado_siagie = sum(c(requiere_recup, postergacion_de_evaluacion, sin_registro_de_evaluacion, fallecidos)))
@@ -34,6 +34,10 @@ siagie_cod_mod$taprobado_siagie <- as.integer(siagie_cod_mod$taprobado_siagie)
 siagie_cod_mod$tpromocion_guiada_siagie <- as.integer(siagie_cod_mod$tpromocion_guiada_siagie)
 siagie_cod_mod$tretirado_siagie <- as.integer(siagie_cod_mod$tretirado_siagie)
 siagie_cod_mod$talumno_otro_estado_siagie <- as.integer(siagie_cod_mod$talumno_otro_estado_siagie)
+
+# SIAGIE 2021 (Matricula ultimo corte)
+
+## EN CONSTRUCCIÓN
 
 ## Padrón de asignación temporal
 

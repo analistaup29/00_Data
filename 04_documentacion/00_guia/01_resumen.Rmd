@@ -29,6 +29,16 @@ Este documento contiene guías/referencias para la organización de la informaci
 
 El presente documento contiene enlaces y referencias para los conceptos utilizados en la construcción de la carpeta de data que se encuentra en la siguiente ruta del Disco B "B:\OneDrive - Ministerio de Educación\unidad_B\0. Data".
 
+## Escribiendo código que otros puedan entender
+
+El buen código es facil de entender y ejecutar por otros. Es importante internalizar que el código es un resultado en sí mismo y no solo un medio para un fin, por lo tanto, debe ser fácil de leer para cualquier integrante.
+
+El primer paso es generar un "master script", un master es un script que se puede utilizar para ejecutar todo el código de un proyecto. Cualquier miembro del equipo debería poder ejecutar este script y otros scripts del proyecto cambiando solo la ruta del archivo del directorio en una línea de código en el master script.
+
+Puedes ver un ejemplo aquí. (ejemplo)
+
+
+
 ### Organización de proyectos/análisis
 
 Generalmente, dentro de una carpeta de proyecto, tenemos una subcarpeta de análisis, donde guardamos las bases de datos, los scripts y otra documentación. Dentro de la subcarpeta "análisis", tenemos:
