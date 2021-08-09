@@ -3,6 +3,7 @@ title: "Documentación/guías del team data"
 date: Última actualización `r format(Sys.time(), '%d %b %Y')`
 output: 
   html_document:
+    code_folding: hide
     self_contained: yes
     includes:
       in_header: header.html
@@ -21,7 +22,9 @@ always_allow_html: true
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
+library(Statamarkdown)
 ```
+
 
 ## Introducción
 
@@ -35,8 +38,108 @@ El buen código es facil de entender y ejecutar por otros. Es importante interna
 
 El primer paso es generar un "master script", un master es un script que se puede utilizar para ejecutar todo el código de un proyecto. Cualquier miembro del equipo debería poder ejecutar este script y otros scripts del proyecto cambiando solo la ruta del archivo del directorio en una línea de código en el master script.
 
-Puedes ver un ejemplo aquí. (ejemplo)
+Puedes ver un ejemplo aquí:
 
+Código en R
+
+```{r master_r, cache=FALSE, eval=FALSE}
+
+# Correr master script
+
+# Seleccionar acciones ---------------------------------------------------------
+
+limpiar_data              <- 1  # Corre script de limpieza de datos
+focalizacion              <- 1  # Corre script de focalización
+
+# Rutas de Usuario -------------------------------------------------------------
+
+# PC Analista UP 18
+if (Sys.getenv("USERNAME") == "analistaup18") {
+  workfolder        <- file.path("B:/OneDrive - Ministerio de Educación/unidad_B/00_Data",
+                           fsep = .Platform$file.sep)
+}
+
+# Paquetes utilizados ----------------------------------------------------------
+
+packages <- c("tidyverse")
+
+# Instalar paquetes 
+
+sapply(packages, function(x){
+  if(!(x %in% installed.packages())){
+    install.packages(x, dependencies = TRUE)
+  }
+})
+
+# Cargar paquetes
+invisible(sapply(packages, require, character.only = TRUE))
+
+# Globales ---------------------------------------------------------------------
+
+scripts                 <- file.path(workfolder, "scripts")
+data_raw                <- file.path(workfolder, "data/raw")
+data_limpia             <- file.path(workfolder, "data/clean")
+output                  <- file.path(workfolder, "output")
+
+# Correr código ----------------------------------------------------------------
+
+# Limpiar datos
+if (limpiar_data) source(file.path(scripts, "01_limpiar_data.R"))
+# INPUTS
+# OUTPUTS
+
+# Elaborar indicador de focalización
+if (focalizacion) source(file.path(scripts, "02_focalizacion.R"))
+# INPUTS 
+# OUTPUTS
+
+```
+
+Código en Stata
+
+```{stata official, cleanlog=FALSE, echo=FALSE, eval=FALSE}
+
+// Correr master script
+
+// Seleccionar acciones --------------------------------------------------------
+
+	local limpiar_data			1 // Corre script de limpieza de datos
+	local focalizacion      1 // Corre script de focalización
+
+// Rutas de Usuario ------------------------------------------------------------
+	
+* Número de usuario:
+* PC Analista UP 18				1
+
+* Establecer este valor para el usuario que actualmente usa el script
+  global user  1
+	
+if $user == 1 {
+       global workfolder 		"B:/OneDrive - Ministerio de Educación/unidad_B/00_Data" // 
+
+// Globales --------------------------------------------------------------------
+
+	global scripts				"$workfolder/scripts"
+	global data_raw				"$workfolder/datasets/data/raw"
+	global data_limpia		"$workfolder/datasets/data/clean"
+	global output				  "$workfolder/output"
+   
+// Correr código ---------------------------------------------------------------	
+	
+//	Limpiar datos
+	if (`limpiar_data' == 1) {
+		do "$scripts/01_limpiar_data.do"
+	}
+	* INPUTS
+	* OUTPUTS
+	
+//	Elaborar indicador de focalización
+	if (`focalizacion' == 1) {
+		do "$scripts/02_focalización.do"
+	}
+	* INPUTS
+	* OUTPUTS
+```
 
 
 ### Organización de proyectos/análisis
