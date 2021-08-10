@@ -7,7 +7,9 @@ padron_asignacion_anexo4 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_pad
 padron_asignacion_anexo5 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo5_limpio.rds"))
 padron_asignacion_anexo6 <- read_rds(file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo6_limpio.rds"))
 registro_eib <- read_rds(file.path(bases_limpias, "02_OSEE", "06_registro_eib", "registro_eib_limpio.rds"))
-siagie_cod_mod <- read_rds(file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_cod_mod.rds"))
+siagie_122020_cod_mod_calif <- read_rds(file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_reporte_calificaciones", "siagie_122020_cod_mod.rds"))
+siagie_072021_cod_mod_matri <- read_rds(file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_reporte_matricula", "siagie_072021_codmod.rds"))
+
 
 # Construir/mantener variables de interés --------------------------------------
 
@@ -22,22 +24,20 @@ registro_eib <- mutate(registro_eib, eib = c("EIB"))
 registro_eib <- registro_eib %>%
   select(cod_mod, anexo, eib, forma_atencion_eib, lengua_originariaeib1, lengua_originariaeib2, lengua_originariaeib3)
 
-# SIAGIE 2020 (Matricula)
-siagie_cod_mod <- siagie_cod_mod %>% 
-  rowwise() %>% mutate(talumno_siagie = sum(c(taprobado_siagie,tpromocion_guiada_siagie, requiere_recup, postergacion_de_evaluacion, tretirado_siagie, sin_registro_de_evaluacion, fallecidos)),
-                      talumno_otro_estado_siagie = sum(c(requiere_recup, postergacion_de_evaluacion, sin_registro_de_evaluacion, fallecidos)))
+# SIAGIE 2020 (calificaciones y total alumnos)
+siagie_122020_cod_mod_calif <- siagie_122020_cod_mod_calif %>% 
+  rowwise() %>% mutate(talumno_siagie2020 = sum(c(taprobado_siagie2020,tpromguiada_siagie2020, requiere_recup2020, postergacion_de_evaluacion2020, tretirado_siagie2020, sin_registro_de_evaluacion2020, fallecidos2020)),
+                      totro_estado_siagie2020 = sum(c(requiere_recup2020, postergacion_de_evaluacion2020, sin_registro_de_evaluacion2020, fallecidos2020)))
 
-siagie_cod_mod <- siagie_cod_mod %>% select(cod_mod, anexo, talumno_siagie, taprobado_siagie, tpromocion_guiada_siagie, tretirado_siagie, talumno_otro_estado_siagie)
+siagie_122020_cod_mod_calif <- siagie_122020_cod_mod_calif %>% select(cod_mod, anexo, talumno_siagie2020, taprobado_siagie2020, tpromguiada_siagie2020, tretirado_siagie2020, totro_estado_siagie2020)
 
-siagie_cod_mod$talumno_siagie <- as.integer(siagie_cod_mod$talumno_siagie)
-siagie_cod_mod$taprobado_siagie <- as.integer(siagie_cod_mod$taprobado_siagie)
-siagie_cod_mod$tpromocion_guiada_siagie <- as.integer(siagie_cod_mod$tpromocion_guiada_siagie)
-siagie_cod_mod$tretirado_siagie <- as.integer(siagie_cod_mod$tretirado_siagie)
-siagie_cod_mod$talumno_otro_estado_siagie <- as.integer(siagie_cod_mod$talumno_otro_estado_siagie)
+siagie_122020_cod_mod_calif$talumno_siagie2020 <- as.integer(siagie_122020_cod_mod_calif$talumno_siagie2020)
+siagie_122020_cod_mod_calif$taprobado_siagie2020 <- as.integer(siagie_122020_cod_mod_calif$taprobado_siagie2020)
+siagie_122020_cod_mod_calif$tpromguiada_siagie2020 <- as.integer(siagie_122020_cod_mod_calif$tpromguiada_siagie2020)
+siagie_122020_cod_mod_calif$tretirado_siagie2020 <- as.integer(siagie_122020_cod_mod_calif$tretirado_siagie2020)
+siagie_122020_cod_mod_calif$totro_estado_siagie2020 <- as.integer(siagie_122020_cod_mod_calif$totro_estado_siagie2020)
 
 # SIAGIE 2021 (Matricula ultimo corte)
-
-## EN CONSTRUCCIÓN
 
 ## Padrón de asignación temporal
 
@@ -55,7 +55,8 @@ padron_asignacion_anexo6 <- select(padron_asignacion_anexo6, cod_mod, anexo, vra
 # Construir base integrada a nivel de servicio educativo (cod_mod) -------------
 
 base_integrada_cod_mod <- padron_iiee %>%
-  left_join(siagie_cod_mod, by = c('cod_mod', "anexo")) %>%
+  left_join(siagie_122020_cod_mod_calif, by = c('cod_mod', "anexo")) %>%
+  left_join(siagie_072021_cod_mod_matri, by = c('cod_mod', "anexo")) %>%
   left_join(registro_eib, by = c('cod_mod', "anexo")) %>%
   left_join(padron_asignacion_anexo4, by = c('cod_mod', "anexo")) %>%
   left_join(padron_asignacion_anexo5, by = c('cod_mod', "anexo")) %>%
@@ -120,11 +121,12 @@ influencia_vraem_levels <- c(
 
 # Añadir labels y factores -----------------------------------------------------
 
-base_integrada_cod_mod$talumno_siagie <- labelled(base_integrada_cod_mod$talumno_siagie, label="Total alumnos (SIAGIE 2020)")
-base_integrada_cod_mod$taprobado_siagie <- labelled(base_integrada_cod_mod$taprobado_siagie, label="Total alumnos aprobados (SIAGIE 2020)")
-base_integrada_cod_mod$tpromocion_guiada_siagie <- labelled(base_integrada_cod_mod$tpromocion_guiada_siagie, label="Total alumnos en promoción guiada (SIAGIE 2020)")
-base_integrada_cod_mod$tretirado_siagie <- labelled(base_integrada_cod_mod$tretirado_siagie, label="Total alumnos retirados (SIAGIE 2020)")
-base_integrada_cod_mod$talumno_otro_estado_siagie <- labelled(base_integrada_cod_mod$talumno_otro_estado_siagie, label="Total alumnos en otro estado (SIAGIE 2020)")
+base_integrada_cod_mod$talumno_siagie2020 <- labelled(base_integrada_cod_mod$talumno_siagie2020, label="Total alumnos (SIAGIE Dic 2020)")
+base_integrada_cod_mod$taprobado_siagie2020 <- labelled(base_integrada_cod_mod$taprobado_siagie2020, label="Total alumnos aprobados (SIAGIE Dic 2020)")
+base_integrada_cod_mod$tpromguiada_siagie2020 <- labelled(base_integrada_cod_mod$tpromguiada_siagie2020, label="Total alumnos en promoción guiada (SIAGIE Dic 2020)")
+base_integrada_cod_mod$tretirado_siagie2020 <- labelled(base_integrada_cod_mod$tretirado_siagie2020, label="Total alumnos retirados (SIAGIE Dic 2020)")
+base_integrada_cod_mod$totro_estado_siagie2020 <- labelled(base_integrada_cod_mod$totro_estado_siagie2020, label="Total alumnos en otro estado (SIAGIE Dic 2020)")
+base_integrada_cod_mod$talumno_siagie2021 <- labelled(base_integrada_cod_mod$talumno_siagie2021, label="Total alumnos (SIAGIE Jul 2021)")
 base_integrada_cod_mod$lengua_originariaeib1 <- labelled(base_integrada_cod_mod$lengua_originariaeib1, label="Lengua originaria 1 (Registro EIB 2019)")
 base_integrada_cod_mod$lengua_originariaeib2 <- labelled(base_integrada_cod_mod$lengua_originariaeib2, label="Lengua originaria 2 (Registro EIB 2019)")
 base_integrada_cod_mod$lengua_originariaeib3 <- labelled(base_integrada_cod_mod$lengua_originariaeib3, label="Lengua originaria 3 (Registro EIB 2019)")

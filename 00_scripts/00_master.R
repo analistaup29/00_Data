@@ -4,7 +4,7 @@
 # Seleccionar acciones ---------------------------------------------------------
 
 # Limpieza de datos
-limpiar_r             <- 1  # Corre script de limpieza de datos en R
+limpiar_r             <- 0  # Corre script de limpieza de datos en R
 limpiar_stata         <- 0  # Corre script de limpieza de datos en Stata
 limpiar_python        <- 0  # Corre script de limpieza de datos en Python
 
