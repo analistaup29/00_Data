@@ -1,19 +1,30 @@
-# Limpiar data SIAGIE 2021 cortes mensuales
+# Limpiar data CENSO DRE-UGEL
 
 # Cargar dataset ---------------------------------------------------------------
+dre_ugel_data <- read_xlsx(file.path(bases_crudas, "02_OSEE", "03_censo_dreugel", "2020", "00. Modulo 0", "CARATULA_1.xlsx")) %>% clean_names()
 
-siagie_072021_codmod <- read_xlsx(file.path(bases_crudas, "02_OSEE", "01_siagie", "siagie_reporte_matricula","SIAGIE Reporte Matricula 31072021.xlsx"), sheet = "JULIO_2021", col_names = TRUE ) %>% clean_names()
+# Cambiar nombres a variables --------------------------------------------------
 
-# Cambiar nombres a variables y colapsar ---------------------------------------
+dre_ugel_data <- dre_ugel_data %>% 
+  rename(codooii = cod_id,
+         nombre_dre_ugel = m0_p02,
+         es_ejecutora = m0_p04,
+         nombre_dependencia = m0_p05,
+         codooii_dependencia = m0_p06,
+         d_dpto = m0_p07,
+         d_prov = m0_p08,
+         d_dis = m0_p09,
+         nombre_ccpp = m0_p10,
+         n_long_dreugel = m0_p13_1,
+         n_lat_dreugel = m0_p13_2,
+         precision_coordenadas = m0_p14)
 
-siagie_072021_codmod <- siagie_072021_codmod %>%
-  group_by(cod_mod, anexo) %>%
-  summarize(talumno_siagie2021 = sum(total))
+# Seleccionar variables de interés ---------------------------------------------
 
-siagie_072021_codmod$talumno_siagie2021 <- as.integer(siagie_072021_codmod$talumno_siagie2021)
-
+dre_ugel_data <- dre_ugel_data %>% 
+  select(codooii, nombre_dre_ugel, es_ejecutora, nombre_dependencia, codooii_dependencia, d_dpto, d_prov, d_dis, nombre_ccpp, n_long_dreugel, n_lat_dreugel, precision_coordenadas)
 
 # Guardar bases en RDS y DTA ---------------------------------------------------
 
-write_rds(siagie_072021_codmod, path = file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_reporte_matricula", "siagie_072021_codmod.rds"))
-write_dta(siagie_072021_codmod, path = file.path(bases_limpias, "02_OSEE", "01_siagie", "siagie_reporte_matricula", "siagie_072021_codmod.dta"))
+write_rds(dre_ugel_data, path = file.path(bases_limpias, "02_OSEE", "03_censo_dreugel", "2020", "dre_ugel_caratula.rds"))
+write_dta(dre_ugel_data, path = file.path(bases_limpias, "02_OSEE", "03_censo_dreugel", "2020", "dre_ugel_caratula.dta"))
