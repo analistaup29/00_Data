@@ -9,7 +9,7 @@ limpiar_stata         <- 0  # Corre script de limpieza de datos en Stata
 limpiar_python        <- 0  # Corre script de limpieza de datos en Python
 
 # Construccion de datos
-construir_bases_integradas   <- 1  # Genera datos construidos
+construir_bases_integradas   <- 0  # Genera datos construidos
 
 # Rutas de Usuario -------------------------------------------------------------
 

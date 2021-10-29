@@ -42,7 +42,7 @@ siagie_122020_cod_mod_calif$totro_estado_siagie2020 <- as.integer(siagie_122020_
 ## Padrón de asignación temporal
 
 # Tipo de ruralidad
-padron_asignacion_anexo4 <- select(padron_asignacion_anexo4, cod_mod, anexo)
+padron_asignacion_anexo4 <- select(tipo_de_ruralidad, padron_asignacion_anexo4, cod_mod, anexo)
 
 # IIEE en zona de frontera
 padron_asignacion_anexo5 <- mutate(padron_asignacion_anexo5, zona_frontera = c("Si"))
@@ -130,6 +130,7 @@ base_integrada_cod_mod$talumno_siagie2021 <- labelled(base_integrada_cod_mod$tal
 base_integrada_cod_mod$lengua_originariaeib1 <- labelled(base_integrada_cod_mod$lengua_originariaeib1, label="Lengua originaria 1 (Registro EIB 2019)")
 base_integrada_cod_mod$lengua_originariaeib2 <- labelled(base_integrada_cod_mod$lengua_originariaeib2, label="Lengua originaria 2 (Registro EIB 2019)")
 base_integrada_cod_mod$lengua_originariaeib3 <- labelled(base_integrada_cod_mod$lengua_originariaeib3, label="Lengua originaria 3 (Registro EIB 2019)")
+base_integrada_cod_mod$tipo_de_ruralidad <- labelled(base_integrada_cod_mod$tipo_de_ruralidad, label="Tipo de Ruralidad (RM 028-2021)")
 
 
 base_integrada_cod_mod$eib <- labelled(base_integrada_cod_mod$eib, label="IIEE es EIB (Registro EIB 2019)", labels = eib_levels)
@@ -138,13 +139,13 @@ base_integrada_cod_mod$eib <- haven::as_factor(base_integrada_cod_mod$eib, level
 base_integrada_cod_mod$forma_atencion_eib <- labelled(base_integrada_cod_mod$forma_atencion_eib, label="Forma EIB (Registro EIB 2019)", labels = forma_eib_levels)
 base_integrada_cod_mod$forma_atencion_eib <-  haven::as_factor(base_integrada_cod_mod$forma_atencion_eib, levels = "values")
 
-base_integrada_cod_mod$zona_frontera <- labelled(base_integrada_cod_mod$zona_frontera, label="IIEE se encuentra en zona de frontera", labels = zona_frontera_levels)
+base_integrada_cod_mod$zona_frontera <- labelled(base_integrada_cod_mod$zona_frontera, label="IIEE se encuentra en zona de frontera (RM 028-2021)", labels = zona_frontera_levels)
 base_integrada_cod_mod$zona_frontera <-  haven::as_factor(base_integrada_cod_mod$zona_frontera, levels = "values")
 
-base_integrada_cod_mod$vraem <- labelled(base_integrada_cod_mod$vraem, label="IIEE se encuentra en zona de influencia VRAEM", labels = vraem_levels)
+base_integrada_cod_mod$vraem <- labelled(base_integrada_cod_mod$vraem, label="IIEE se encuentra en zona de influencia VRAEM (RM 028-2021)", labels = vraem_levels)
 base_integrada_cod_mod$vraem <-  haven::as_factor(base_integrada_cod_mod$vraem, levels = "values")
 
-base_integrada_cod_mod$intervencion_vraem <- labelled(base_integrada_cod_mod$intervencion_vraem, label="Tipo de intervencion IIEE Vraem", labels = influencia_vraem_levels)
+base_integrada_cod_mod$intervencion_vraem <- labelled(base_integrada_cod_mod$intervencion_vraem, label="Tipo de intervencion IIEE Vraem (RM 028-2021)", labels = influencia_vraem_levels)
 base_integrada_cod_mod$intervencion_vraem <-  haven::as_factor(base_integrada_cod_mod$intervencion_vraem, levels = "values")
 
 # Guardar bases en RDS y DTA ---------------------------------------------------
