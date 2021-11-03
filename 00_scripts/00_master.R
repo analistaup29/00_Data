@@ -1,4 +1,3 @@
-
 # Correr master script
 
 # Seleccionar acciones ---------------------------------------------------------
@@ -39,6 +38,13 @@ if (Sys.getenv("USERNAME") == "ANALISTAUP29") {
                            fsep = .Platform$file.sep)
 }
 
+# PC Brandon
+if (Sys.getenv("USER") == "bran") {
+  data        <- file.path("/Users/bran/OneDrive - Ministerio de Educación/temp_data/00_Data",
+                           fsep = .Platform$file.sep)
+  github      <- file.path("/Users/bran/Documents/GitHub/00_Data",
+                           fsep = .Platform$file.sep)
+}
 # Paquetes utilizados ---------------------------------------------------------------------
 
 packages <- c("tidyverse",
@@ -79,7 +85,6 @@ if (limpiar_padrones_asig_temp) source(file.path(scripts, "01_limpiar_bases", "0
 
 # Limpia registro EIB 2019
 if (limpiar_registro_eib) source(file.path(scripts, "01_limpiar_bases", "03_registro_eib.R"))
-
 
 # Limpia padron SIAGIE 2020
 if (limpiar_siagie_notas) source(file.path(scripts, "01_limpiar_bases", "04_siagie_notas.R"))
