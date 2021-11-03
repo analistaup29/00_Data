@@ -43,15 +43,15 @@ porcent_predios_propiedad <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_in
   clean_names() 
 
 # Porcentaje de predios de la DRE y UGEL que cuentan con telefonía fija propia
-porcent_predios_telefija <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "03_infraestructura", "DRE_y_UGEL_telefonía_fija_propia.xlsx"), sheet = "UGEL", skip = 3) %>% 
+porcent_predios_telefija <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "03_infraestructura", "DRE_y_UGEL_telefonia_fija_propia.xlsx"), sheet = "UGEL", skip = 3) %>% 
   clean_names() 
 
 # Porcentaje de predios de la DRE y UGEL que cuentan con telefonía móvil propia
-porcent_predios_telemovil <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "03_infraestructura", "DRE_y_UGEL_telefonía_móvil_propia.xlsx"), sheet = "UGEL", skip = 3) %>% 
+porcent_predios_telemovil <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "03_infraestructura", "DRE_y_UGEL_telefonia_movil_propia.xlsx"), sheet = "UGEL", skip = 3) %>% 
   clean_names() 
 
 # Porcentaje de predios de las DRE y UGEL que cuentan con los tres servicios básicos
-porcent_predios_ssbb <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "03_infraestructura", "DRE_y_UGEL_tres_servicios_básicos.xlsx"), sheet = "UGEL", skip = 3) %>% 
+porcent_predios_ssbb <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "03_infraestructura", "DRE_y_UGEL_tres_servicios_basicos.xlsx"), sheet = "UGEL", skip = 3) %>% 
   clean_names() 
 
 # 04_potencial humano ----
@@ -63,7 +63,7 @@ trabaj_dreugel_1000est <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indic
 # 05_parque informático ----
 
 # Porcentaje de equipos informáticos operativos
-porcent_equinf_oper <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "05_parque_informatico", "DRE_UGEL-equipos_informáticos_operativos.xlsx"), sheet = "UGEL", skip = 3) %>% 
+porcent_equinf_oper <- read_xlsx(file.path(bases_crudas, "02_OSEE", "08_indicadores_dreugel", "05_parque_informatico", "DRE_UGEL-equipos_informaticos_operativos.xlsx"), sheet = "UGEL", skip = 3) %>% 
   clean_names() 
 
 # Porcentaje de vehículos operativos de las DRE y UGEL que tienen una antigüedad mayor a cinco años
