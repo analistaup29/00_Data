@@ -4,12 +4,14 @@
 # Seleccionar acciones ---------------------------------------------------------
 
 # Limpieza de datos
-limpiar_r             <- 0  # Corre script de limpieza de datos en R
-limpiar_stata         <- 0  # Corre script de limpieza de datos en Stata
-limpiar_python        <- 0  # Corre script de limpieza de datos en Python
+limpiar_padron_iiee         <- 0 # Limpia padron de IIEE
+limpiar_padrones_asig_temp  <- 0 # Limpia padrones de asignaciones temporales
+limpiar_registro_eib        <- 0 # Limpia registro EIB 2019
+limpiar_siagie_notas        <- 0 # Limpia padron SIAGIE 2020 notas
+limpiar_siagie_matricula    <- 0 # Limpia padron SIAGIE 2021 matriculas
 
-# Construccion de datos
-construir_bases_integradas   <- 0  # Genera datos construidos
+# Limpieza de datos
+construir_base_cod_mod      <- 0 # Construye base a nivel de servicio educativo
 
 # Rutas de Usuario -------------------------------------------------------------
 
@@ -67,16 +69,27 @@ bases_crudas          <- file.path(data, "01_bases_crudas")
 bases_limpias         <- file.path(data, "02_bases_limpias")
 bases_construidas     <- file.path(data, "03_bases_construidas")
 
-# Correr codigo ----------------------------------------------------------------
+# Correr codigo (limpieza) -----------------------------------------------------
 
-# Limpiar datos
-if (limpiar_r) source(file.path(scripts, "01_limpiar_bases", "00_run_r.R"))
-# INPUTS
-# OUTPUTS
+# Limpia padron de IIEE
+if (limpiar_padron_iiee) source(file.path(scripts, "01_limpiar_bases", "01_padron_iiee.R"))
 
-# Construir bases
-if (construir_bases_integradas) source(file.path(scripts, "02_construir_bases", "00_run.R"))
-# INPUTS 
-# OUTPUTS
+# Limpia padrones de asignaciones temporales
+if (limpiar_padrones_asig_temp) source(file.path(scripts, "01_limpiar_bases", "02_padron_asignaciones_temporales.R"))
 
+# Limpia registro EIB 2019
+if (limpiar_registro_eib) source(file.path(scripts, "01_limpiar_bases", "03_registro_eib.R"))
+
+
+# Limpia padron SIAGIE 2020
+if (limpiar_siagie_notas) source(file.path(scripts, "01_limpiar_bases", "04_siagie_notas.R"))
+
+# Limpia padron SIAGIE 2020
+if (limpiar_siagie_matricula) source(file.path(scripts, "01_limpiar_bases", "05_siagie_matricula.R"))
+
+
+# Correr código (basas integradas) ---------------------------------------------
+
+# Construir base a nivel de servicio educativo
+if (construir_base_cod_mod) source(file.path(scripts, "02_construir_bases", "01_base_integrada_cod_mod.R"))
 

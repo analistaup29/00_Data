@@ -413,7 +413,7 @@ eib_4prim_2018 <- eib_4prim_2018 %>%
 
 # Variables identificadoras
 
-var_id <- ece_2prim %>%
+var_id <- ece_2prim_2016 %>% # Elegimos cualquier base para conservar variables
   select(
     cod_mod,
     anexo,
@@ -470,6 +470,32 @@ eib_4prim <- eib_4prim_2015 %>%
   select(-ends_with(".x")) %>%
   select(-ends_with(".y")) 
 
+# Labels -----------------------------------------------
+
+ece_2sec$lec_porcent_prev_18 <- labelled(ece_2sec$lec_porcent_prev_18, label =  "Lectura: % estudiantes en logro previo inicio (2sec - ECE 2018)" )
+ece_2sec$lec_porcent_inic_18 <- labelled(ece_2sec$lec_porcent_inic_18, label =  "Lectura: % estudiantes en logro inicio (2sec - ECE 2018)" )
+ece_2sec$lec_porcent_proc_18 <- labelled(ece_2sec$lec_porcent_proc_18, label =  "Lectura: % estudiantes en logro en proceso (2sec - ECE 2018)" )
+ece_2sec$lec_porcent_sati_18 <- labelled(ece_2sec$lec_porcent_sati_18, label =  "Lectura: % estudiantes en logro satisfactorio (2sec - ECE 2018)" )
+ece_2sec$mat_porcent_prev_18 <- labelled(ece_2sec$mat_porcent_prev_18, label =  "Matemática: % estudiantes en logro previo inicio (2sec - ECE 2018)" )
+ece_2sec$mat_porcent_inic_18 <- labelled(ece_2sec$mat_porcent_inic_18, label =  "Matemática: % estudiantes en logro inicio (2sec - ECE 2018)" )
+ece_2sec$mat_porcent_proc_18 <- labelled(ece_2sec$mat_porcent_proc_18, label =  "Matemática: % estudiantes en logro en proceso (2sec - ECE 2018)" )
+ece_2sec$mat_porcent_sati_18 <- labelled(ece_2sec$mat_porcent_sati_18, label =  "Matemática: % estudiantes en logro satisfactorio (2sec - ECE 2018)" )
+ece_2sec$cte_porcent_prev_18 <- labelled(ece_2sec$cte_porcent_prev_18, label =  "Ciencia y tec: % estudiantes en logro previo inicio (2sec - ECE 2018)" )
+ece_2sec$cte_porcent_inic_18 <- labelled(ece_2sec$cte_porcent_inic_18, label =  "Ciencia y tec: % estudiantes en logro inicio (2sec - ECE 2018)" )
+ece_2sec$cte_porcent_proc_18 <- labelled(ece_2sec$cte_porcent_proc_18, label =  "Ciencia y tec: % estudiantes en logro en proceso (2sec - ECE 2018)" )
+ece_2sec$cte_porcent_sati_18 <- labelled(ece_2sec$cte_porcent_sati_18, label =  "Ciencia y tec: % estudiantes en logro satisfactorio (2sec - ECE 2018)" )
+ece_2sec$lec_porcent_prev_19 <- labelled(ece_2sec$lec_porcent_prev_19, label =  "Lectura: % estudiantes en logro previo inicio (2sec - ECE 2019)" )
+ece_2sec$lec_porcent_inic_19 <- labelled(ece_2sec$lec_porcent_inic_19, label =  "Lectura: % estudiantes en logro inicio (2sec - ECE 2019)" )
+ece_2sec$lec_porcent_proc_19 <- labelled(ece_2sec$lec_porcent_proc_19, label =  "Lectura: % estudiantes en logro en proceso (2sec - ECE 2019)" )
+ece_2sec$lec_porcent_sati_19 <- labelled(ece_2sec$lec_porcent_sati_19, label =  "Lectura: % estudiantes en logro satisfactorio (2sec - ECE 2019)" )
+ece_2sec$mat_porcent_prev_19 <- labelled(ece_2sec$mat_porcent_prev_19, label =  "Matemática: % estudiantes en logro previo inicio (2sec - ECE 2019)" )
+ece_2sec$mat_porcent_inic_19 <- labelled(ece_2sec$mat_porcent_inic_19, label =  "Matemática: % estudiantes en logro inicio (2sec - ECE 2019)" )
+ece_2sec$mat_porcent_proc_19 <- labelled(ece_2sec$mat_porcent_proc_19, label =  "Matemática: % estudiantes en logro en proceso (2sec - ECE 2019)" )
+ece_2sec$mat_porcent_sati_19 <- labelled(ece_2sec$mat_porcent_sati_19, label =  "Matemática: % estudiantes en logro satisfactorio (2sec - ECE 2019)" )
+ece_2sec$cte_porcent_prev_19 <- labelled(ece_2sec$cte_porcent_prev_19, label =  "Ciencia y tec: % estudiantes en logro previo inicio (2sec - ECE 2019)" )
+ece_2sec$cte_porcent_inic_19 <- labelled(ece_2sec$cte_porcent_inic_19, label =  "Ciencia y tec: % estudiantes en logro inicio (2sec - ECE 2019)" )
+ece_2sec$cte_porcent_proc_19 <- labelled(ece_2sec$cte_porcent_proc_19, label =  "Ciencia y tec: % estudiantes en logro en proceso (2sec - ECE 2019)" )
+ece_2sec$cte_porcent_sati_19 <- labelled(ece_2sec$cte_porcent_sati_19, label =  "Ciencia y tec: % estudiantes en logro satisfactorio (2sec - ECE 2019)" )
 # Guardar bases de datos limpias -----------------------------------------------
 
 write_rds(ece_2sec,  file.path(bases_limpias, "01_UMC","01_ece", "ece_2sec_cod_mod.rds"))
