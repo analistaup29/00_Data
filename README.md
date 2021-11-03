@@ -4,10 +4,9 @@ Este repositorio contiene los accesos y el código de limpia las datasets de Min
 
 Dependiendo del análisis que quieras hacer, las datasets más útiles son las `construidas`, ya que sus variables fueron normalizadas, se añadieron labels y se combinaron diversas bases para caracterizar a las IIEE (aquí se incluyen las bases puras integradas). El siguiente cuadro muestra las principales datasets construidas y su ubicación en el disco B:
 
-| Nombre | Descripción | Ubicación | Diccionario |
+| Nombre | Descripción | Ubicación (unidad_B/00_Data) | Diccionario |
 |--------|-------------|-----------|-------------|
-| base_integrada_cod_mod | La base pura integrada contiene indicadores que caracterizan a los servicios educativos (cod_mod) | `B:/OneDrive/unidad_B/00_Data` `03_bases_construidas/01_bases_integradas` | [diccionario_base_integrada_cod_mod](https://github.com/analistaup29/00_Data/tree/main/04_documentacion/01_diccionarios) |
-
+| base_integrada_cod_mod | Contiene indicadores que caracterizan a los servicios educativos (cod_mod) | `B:/OneDrive/unidad_B/00_Data` `03_bases_construidas` `01_bases_integradas` | [dic_base_integrada_cod_mod](https://github.com/analistaup29/00_Data/tree/main/04_documentacion/01_diccionarios) |
 
 
 <p align="center">
