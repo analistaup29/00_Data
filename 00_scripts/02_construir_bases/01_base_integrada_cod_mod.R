@@ -16,7 +16,7 @@ siagie_072021_cod_mod_matri <- read_rds(file.path(bases_limpias, "02_OSEE", "01_
 ## Padrón IIEE
 
 padron_iiee <- padron_iiee %>% 
-  select(cod_mod, anexo, codlocal, codooii, d_dreugel, codgeo, d_dpto, d_prov, d_dist, d_region, codcp_inei, codccpp, cen_pob, dareacenso, nlat_ie, nlong_ie,  niv_mod, d_niv_mod, d_forma, d_cod_car, d_tipssexo, d_gestion, d_ges_dep, d_tipoprog, d_cod_tur, d_estado, d_fte_dato, talum_hom_censo, talum_muj_censo, talumno_censo, tdocente_censo, tseccion_censo, fecha_act)
+  select(cod_mod, anexo, cen_edu, codlocal, codooii, d_dreugel, codgeo, d_dpto, d_prov, d_dist, d_region, codcp_inei, codccpp, cen_pob, dareacenso, nlat_ie, nlong_ie,  niv_mod, d_niv_mod, d_forma, d_cod_car, d_tipssexo, d_gestion, d_ges_dep, d_tipoprog, d_cod_tur, d_estado, d_fte_dato, talum_hom_censo, talum_muj_censo, talumno_censo, tdocente_censo, tseccion_censo, fecha_act)
 
 # Registro EIB
 registro_eib <- mutate(registro_eib, eib = c("EIB"))
@@ -63,7 +63,7 @@ base_integrada_cod_mod <- padron_iiee %>%
   left_join(padron_asignacion_anexo6, by = c('cod_mod', "anexo")) %>%
   distinct()
 
-# Añadir labels y factores -----------------------------------------------------
+# AÃ±adir labels y factores -----------------------------------------------------
 
 base_integrada_cod_mod <- base_integrada_cod_mod %>% 
   mutate(eib = replace(eib, is.na(eib) , "No EIB"))
@@ -119,7 +119,7 @@ influencia_vraem_levels <- c(
   influencia_vraem3 = "NO APLICA"
 )
 
-# Añadir labels y factores -----------------------------------------------------
+# AÃ±adir labels y factores -----------------------------------------------------
 
 base_integrada_cod_mod$talumno_siagie2020 <- labelled(base_integrada_cod_mod$talumno_siagie2020, label="Total alumnos (SIAGIE Dic 2020)")
 base_integrada_cod_mod$taprobado_siagie2020 <- labelled(base_integrada_cod_mod$taprobado_siagie2020, label="Total alumnos aprobados (SIAGIE Dic 2020)")

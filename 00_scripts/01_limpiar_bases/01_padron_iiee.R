@@ -4,8 +4,8 @@
 
 # Leer dbf
 
-#read.dbf("B:/OneDrive - Ministerio de Educación/unidad_B/00_Data/01_bases_crudas/02_OSEE/04_padron_iiee/Padron_web20210723.dbf")
-padron_iiee <- read.dbf(file.path(bases_crudas, "02_OSEE", "04_padron_iiee","Padron_web20210723.dbf"), as.is = TRUE)  %>% clean_names()
+padron_iiee <- read.dbf("B:/OneDrive - Ministerio de Educación/unidad_B/00_Data/01_bases_crudas/02_OSEE/04_padron_iiee/Padron_web20210723.dbf", as.is = TRUE) %>% clean_names()
+#padron_iiee <- read.dbf(file.path(bases_crudas, "02_OSEE", "04_padron_iiee","Padron_web20210723.dbf"), as.is = TRUE)  %>% clean_names()
 
 
 # Cambiar encoding a UTF-8 - Encoding se encuentra en IBM850

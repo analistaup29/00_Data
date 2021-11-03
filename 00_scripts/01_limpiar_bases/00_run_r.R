@@ -8,7 +8,7 @@ limpiar_padron_iiee         <- 0 # Limpia padron de IIEE
 limpiar_padrones_asig_temp  <- 0 # Limpia padrones de asignaciones temporales
 limpiar_registro_eib        <- 0 # Limpia registro EIB 2019
 limpiar_siagie_notas        <- 0 # Limpia padron SIAGIE 2020 notas
-limpiar_siagie_matricula    <- 1 # Limpia padron SIAGIE 2021 matriculas
+limpiar_siagie_matricula    <- 0 # Limpia padron SIAGIE 2021 matriculas
 
 
 # Correr codigo ----------------------------------------------------------------
@@ -37,4 +37,3 @@ if (limpiar_siagie_notas) source(file.path(scripts, "01_limpiar_bases", "04_siag
 if (limpiar_siagie_matricula) source(file.path(scripts, "01_limpiar_bases", "05_siagie_matricula.R"))
 # INPUTS
 # OUTPUTS
-
