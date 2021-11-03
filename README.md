@@ -1,6 +1,25 @@
-# Repositorio Team Data - UPP
+# Repositorio de data
 
-Este repositorio contiene el código que transforma las bases de datos/fuentes de información generadas por Minedu para su uso en la elaboración de estudios/análisis enfocados en asegurar un gasto público eficiente y tomar decisiones basadas en evidencia.
+Este repositorio contiene los accesos y el código de limpia las datasets de Minedu para su uso por el equipo de Analítica de Datos de UPP. Para su fácil manejo, se ha organizado la data en 3 etapas/partes:
+
+- Data cruda: Contiene datasets recibidas *as is* por las Unidades/Direcciones de Minedu, no está lista para ser analizada de inmediato y generalmente se encuentra en formato `.xlsx` o `.txt`.
+- Data limpia: Contiene datasets que fueron procesadas para normalizar los nombres, añadir labels o crear variables adicionales. La data se guarda en [formato tidy](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html). Se guarda en formato `.rds` o `.dta` y está lista para ser analizada/procesada en un Software Estadístico.
+- Data construida: Contiene datasets que ya fueron *combinadas* a nivel `cod_mod`, `cod_local` u otro nivel (se combinan las datasets limpias). Se recomienda utilizar las datasets construidas ya que tienen los nombres normalizados, tienen labels y contienen indicadores relevantes para la caracterización de las IIEE.
+
+Dependiendo del análisis que se quiera hacer, las datasets más útiles son las que se encuentran `limpias` o `construidas`. El siguiente cuadro muestra las principales datasets construidas y su ubicación en el disco B:
+
+
+
+Dependiendo del trabajo que quieras hacer, se puede convenir utilizar la data construida que
+
+
+
+
+
+
+Organización de la data
+-------------------------
+
 
 Si encuentras algún problema para correr el código o reproducir los resultados, por favor [crea un `Informe de problemas`](https://github.com/analistaup29/00_Data/issues/new) en este repositorio.
 
