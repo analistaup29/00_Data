@@ -1,7 +1,3 @@
-<p align="center">
-	<img src="https://github.com/analistaup29/00_Data/blob/main/img/logo_minedu.png?raw=true")>
-</p>
-
 # Repositorio Team Data - UPP
 
 Este repositorio contiene el código que transforma las bases de datos/fuentes de información generadas por Minedu para su uso en la elaboración de estudios/análisis enfocados en asegurar un gasto público eficiente y tomar decisiones basadas en evidencia.
@@ -50,3 +46,7 @@ Guías
 También se han elaborado guías para que puedas utilizar las bases de datos, crees un proyecto y lo sincronizes con GitHub, etc. Esta información se encuentra disponible en la [Guía de Usuario](https://raw.githack.com/analistaup29/00_Data/main/04_documentacion/00_guia/01_resumen.html) **(En elaboración)**
 
 &nbsp;
+
+<p align="center">
+	<img src="https://github.com/analistaup29/00_Data/blob/main/img/logo_minedu.png?raw=true")>
+</p>
