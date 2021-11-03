@@ -16,11 +16,13 @@ siagie_2020_calificaciones <- siagie_2020_calificaciones %>%
          fallecidos2020 = fallecidos,
          postergacion_de_evaluacion2020 = postergacion_de_evaluacion)
 
-# Mutar ---------------------------------------------------
+# Transformamos variables ------------------------------------------------------
 
+# Convertimos a numérico
 siagie_2020_calificaciones <- siagie_2020_calificaciones %>% 
   mutate_at(c(10:16), as.numeric)
 
+# Agrupamos a nivel de cod_mod y anexo
 siagie_122020_cod_mod <- siagie_2020_calificaciones %>%
   group_by(cod_mod, anexo) %>%
   summarize(taprobado_siagie2020 = sum(taprobado_siagie2020),
@@ -31,6 +33,26 @@ siagie_122020_cod_mod <- siagie_2020_calificaciones %>%
             sin_registro_de_evaluacion2020 = sum(sin_registro_de_evaluacion2020),
             fallecidos2020 = sum(fallecidos2020)
             )
+
+# Generamos totales
+siagie_122020_cod_mod <- siagie_122020_cod_mod %>% 
+  rowwise() %>% mutate(talumno_siagie2020 = sum(c(taprobado_siagie2020,tpromguiada_siagie2020, requiere_recup2020, postergacion_de_evaluacion2020, tretirado_siagie2020, sin_registro_de_evaluacion2020, fallecidos2020)),
+                       totro_estado_siagie2020 = sum(c(requiere_recup2020, postergacion_de_evaluacion2020, sin_registro_de_evaluacion2020, fallecidos2020)))
+
+# Convertimos a numérico
+siagie_122020_cod_mod$talumno_siagie2020 <- as.integer(siagie_122020_cod_mod$talumno_siagie2020)
+siagie_122020_cod_mod$taprobado_siagie2020 <- as.integer(siagie_122020_cod_mod$taprobado_siagie2020)
+siagie_122020_cod_mod$tpromguiada_siagie2020 <- as.integer(siagie_122020_cod_mod$tpromguiada_siagie2020)
+siagie_122020_cod_mod$tretirado_siagie2020 <- as.integer(siagie_122020_cod_mod$tretirado_siagie2020)
+siagie_122020_cod_mod$totro_estado_siagie2020 <- as.integer(siagie_122020_cod_mod$totro_estado_siagie2020)
+
+
+# Labels
+siagie_122020_cod_mod$talumno_siagie2020 <- labelled(siagie_122020_cod_mod$talumno_siagie2020, label="Total alumnos (SIAGIE Dic 2020)")
+siagie_122020_cod_mod$taprobado_siagie2020 <- labelled(siagie_122020_cod_mod$taprobado_siagie2020, label="Total alumnos aprobados (SIAGIE Dic 2020)")
+siagie_122020_cod_mod$tpromguiada_siagie2020 <- labelled(siagie_122020_cod_mod$tpromguiada_siagie2020, label="Total alumnos en promoción guiada (SIAGIE Dic 2020)")
+siagie_122020_cod_mod$tretirado_siagie2020 <- labelled(siagie_122020_cod_mod$tretirado_siagie2020, label="Total alumnos retirados (SIAGIE Dic 2020)")
+siagie_122020_cod_mod$totro_estado_siagie2020 <- labelled(siagie_122020_cod_mod$totro_estado_siagie2020, label="Total alumnos en otro estado (SIAGIE Dic 2020)")
 
 # Guardar bases en RDS y DTA ---------------------------------------------------
 

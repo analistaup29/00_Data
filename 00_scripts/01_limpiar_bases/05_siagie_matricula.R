@@ -12,6 +12,9 @@ siagie_072021_codmod <- siagie_072021_codmod %>%
 
 siagie_072021_codmod$talumno_siagie2021 <- as.integer(siagie_072021_codmod$talumno_siagie2021)
 
+# Cambiar nombres a variables y colapsar ---------------------------------------
+
+siagie_072021_codmod$talumno_siagie2021 <- labelled(siagie_072021_codmod$talumno_siagie2021, label="Total alumnos (SIAGIE Jul 2021)")
 
 # Guardar bases en RDS y DTA ---------------------------------------------------
 

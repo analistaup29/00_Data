@@ -37,6 +37,19 @@ padron_anexo5$anexo <- as.character(padron_anexo5$anexo)
 padron_anexo6$anexo <- as.character(padron_anexo6$anexo)
 
 
+# Generamos variables identificadoras
+padron_anexo5 <- mutate(padron_anexo5, zona_frontera = c("Si"))
+padron_anexo6 <- mutate(padron_anexo6, vraem = c("Si"))
+
+
+# Generamos labels para variables ----------------------------------------------
+
+padron_anexo5$zona_frontera <- labelled(padron_anexo5$zona_frontera, label="IIEE se encuentra en zona de frontera (RM 028-2021-MINEDU)")
+padron_anexo6$vraem <- labelled(padron_anexo6$vraem, label="IIEE se encuentra en zona de influencia VRAEM RM 028-2021-MINEDU)")
+padron_anexo6$intervencion_vraem <- labelled(padron_anexo6$intervencion_vraem, label="Tipo de intervencion IIEE Vraem (RM 028-2021)")
+padron_anexo4$tipo_de_ruralidad <- labelled(padron_anexo4$tipo_de_ruralidad, label="Tipo de Ruralidad (RM 028-2021-MINEDU)")
+
+
 # Guardar bases en RDS y DTA ---------------------------------------------------
 
 write_dta(padron_anexo4, path = file.path(bases_limpias, "02_OSEE", "07_padron_asignaciones_temporales", "padron_anexo4_limpio.dta"))
