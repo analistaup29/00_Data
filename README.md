@@ -7,6 +7,7 @@ Dependiendo del análisis que quieras hacer, las datasets más útiles son las `
 | Nombre | Descripción | Ubicación (unidad_B/00_Data) | Diccionario |
 |--------|-------------|-----------|-------------|
 | base_integrada_cod_mod | Contiene indicadores que caracterizan a los servicios educativos (cod_mod) | `03_bases_construidas` `/01_bases_integradas` | [dic_base_integrada_cod_mod](https://github.com/analistaup29/00_Data/tree/main/04_documentacion/01_diccionarios) |
+| base_integrada_cod_local | Contiene indicadores que caracterizan a los locales educativos (cod_local) | `03_bases_construidas` `/01_bases_integradas` | [dic_base_integrada_cod_local](https://github.com/analistaup29/00_Data/tree/main/04_documentacion/01_diccionarios) |
 | base_integrada_codooii | Contiene indicadores que caracterizan a las DRE/UGELES (codooii) | `03_bases_construidas` `/01_bases_integradas` | [dic_base_integrada_codooii](https://github.com/analistaup29/00_Data/tree/main/04_documentacion/01_diccionarios) |
 
 <p align="center">
